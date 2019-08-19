@@ -44,5 +44,14 @@ config.vm.box = "ubuntu/xenial64"
   config.vm.define "tzconverter" do |tzconverter|
   tzconverter.vm.network "private_network", ip: "192.168.2.13"
   tzconverter.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"] 
-  end
+  tzconverter.vm.network "forwarded_port", guest: 80, host: 8081, host_ip: "127.0.0.1"
+                tzconverter.vm.provision "shell", inline: <<-SHELL
+                        apt-get update
+                        apt-get install -y apache2 php libapache2-mod-php php-mysql
+                        cp /vagrant/converter.conf /etc/apache2/sites-available/
+                        a2ensite converter-website
+                        a2dissite 000-default
+                        service apache2 reload
+                SHELL
+ end
 end
