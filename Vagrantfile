@@ -36,7 +36,7 @@ config.vm.box = "ubuntu/xenial64"
       echo "GRANT ALL PRIVILEGES ON timezones.* TO 'webuser'@'%'" | mysql
       export MYSQL_PWD='Quack1nce4^'
       cat /vagrant/database-tz-setup.sql | mysql -u webuser timezones
-      #sed -i'' -e '/bind-address/s/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+      sed -i'' -e '/bind-address/s/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
       service mysql restart
     SHELL
   end

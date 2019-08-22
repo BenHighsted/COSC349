@@ -1,47 +1,63 @@
 <!DOCTYPE HTML>
 <html>
 
-<head>
-<h1> World Timezone Converter </h1>
-</head>
+  <head>
+    <h1> World Timezone Converter </h1>
+  </head> 
 
 <body>
-<p> <?php $time = file_get_contents('http://192.168.2.13?timezone=nzt');?> </p>
+<p> <?php $time = file_get_contents("http://192.168.2.13?timezone=nzt");?> </p>
 <p id="test"></p>
 
 <p>Current New Zealand time: <?php echo "$time"; ?></p>
 
-<?php $time = file_get_contents('http://192.168.2.13?timezone=est');?>
-
-<p> Temp below, needs to be changed for when the button works </p>
-<p>Current Eastern Standard time: <?php echo "$time"; ?></p>
-
+<form action="index.php" method="post">
 <p> Convert from NZT to:
-<select>
-  <option value="EST">EST</option>
-  <option value="JST">JST</option>
-  <option value="OMST">OMST</option>
-  <option value="BST">BST</option>
-  <option value="AWST">AWST</option>
-  <option value="GMT">GMT</option>
+<select name="timezone">
+  <option value="EST">Eastern Standard Time</option>
+  <option value="JST">Japan Standard Time</option>
+  <option value="MSK">Moscow Time</option>
+  <option value="SGT">Singapore Time</option>
+  <option value="AEST">Australian Eastern Standard Time</option>
+  <option value="CLST">Antarctica (Palmer Station) Time</option>
 </select>
 </p>
 
-<button id="myBtn" type="button">Convert</button>
-<script>
-  document.getElementById("myBtn").addEventListener("click", function(){
-  	document.getElementById("test").innerHTML = <?php echo "test1"; ?>;
- });
-</script>
+
+<input type="submit" name="Convert" value="Convert"></input>
+</form>
 
 <?php
-/* should have no errors connecting if setup right */
-$db_host = '192.168.2.12';
-$db_name = 'timezones';
-$db_user = 'webuser';
-$db_passwd = 'Quack1nce4^';
+  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['Convert'])){
+    func();
+  }
+  function func(){
 
-?>
+  $timezone = $_POST['timezone'];
+
+  if($timezone == "EST"){
+  $est = file_get_contents("http://192.168.2.13?timezone=est");
+  echo "<p> Eastern Standard Time: $est </p>";
+  } else if($timezone == "JST"){
+  $jst = file_get_contents("http://192.168.2.13?timezone=jst");
+  echo "<p> Japan Standard Time: $jst </p>";
+  } else if($timezone == "MSK"){
+  $msk = file_get_contents("http://192.168.2.13?timezone=msk");
+  echo "<p> Moscow Time: $msk </p>";
+  } else if($timezone == "SGT"){
+  $sgt = file_get_contents("http://192.168.2.13?timezone=sgt");
+  echo "<p> Singapore Time: $sgt </p>";
+  } else if($timezone == "AEST"){
+  $aest = file_get_contents("http://192.168.2.13?timezone=aest");
+  echo "<p> Australian Eastern Standard Time: $aest </p>";
+  } else if($timezone == "CLST"){
+  $clst = file_get_contents("http://192.168.2.13?timezone=clst");
+  echo "<p> Antarctica (Palmer Station) Time: $clst </p>";
+  }
+
+  }
+  
+  ?>
 
 </body>
 </html>
