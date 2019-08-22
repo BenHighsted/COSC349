@@ -1,49 +1,23 @@
 <!DOCTYPE HTML>
 <html>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
 <head>
 <h1> World Timezone Converter </h1>
 </head>
 
 <body>
+<p> <?php $time = file_get_contents('http://192.168.2.13?timezone=nzt');?> </p>
+<p id="test"></p>
 
-<p id="output"></p>
+<p>Current New Zealand time: <?php echo "$time"; ?></p>
 
-<script>
-$.ajax({
-  url: 'https://api.myjson.com/bins/bq6eu',
-  success: function(response){
-    document.getElementById("output").innerHTML = response.string;
-  },
-  error: function(response){
-  console.log('server error');
-  }
-});
-</script> 
+<?php $time = file_get_contents('http://192.168.2.13?timezone=est');?>
 
+<p> Temp below, needs to be changed for when the button works </p>
+<p>Current Eastern Standard time: <?php echo "$time"; ?></p>
 
-<form>
-<p>Convert From:
+<p> Convert from NZT to:
 <select>
-  <option value="NZT">NZT</option>
-  <option value="EST">EST</option>
-  <option value="JST">JST</option>
-  <option value="OMST">OMST</option>
-  <option value="BST">BST</option>
-  <option value="AWST">AWST</option>
-  <option value="GMT">GMT</option>
-</select>
-</p>
-  Time to convert:
-  <input type="text">
-</form>
-
-<p> Convert to:
-<select>
-  <option value="NZT">NZT</option>
   <option value="EST">EST</option>
   <option value="JST">JST</option>
   <option value="OMST">OMST</option>
@@ -56,7 +30,8 @@ $.ajax({
 <button id="myBtn" type="button">Convert</button>
 <script>
   document.getElementById("myBtn").addEventListener("click", function(){
-  document.getElementById("demo").innerHTML = "Hello World"; });
+  	document.getElementById("test").innerHTML = <?php echo "test1"; ?>;
+ });
 </script>
 
 <?php

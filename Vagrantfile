@@ -48,7 +48,7 @@ config.vm.box = "ubuntu/xenial64"
                 tzconverter.vm.provision "shell", inline: <<-SHELL
                         apt-get update
                         apt-get install -y apache2 php libapache2-mod-php php-mysql
-                        cp /vagrant/converter.conf /etc/apache2/sites-available/
+                        cp /vagrant/converter-website.conf /etc/apache2/sites-available/
                         a2ensite converter-website
                         a2dissite 000-default
                         service apache2 reload
