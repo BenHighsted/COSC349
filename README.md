@@ -1,4 +1,7 @@
 # COSC349 ASSIGNMENT 1
+
+Ben Highsted(5536340), Matthew Neil(7388248)
+
 Assignment 1 for COSC349 at the University of Otago.
 
 To use our timezone converter, simply clone the repository into a local directory, then type 'vagrant up'.
