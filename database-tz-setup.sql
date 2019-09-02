@@ -1,7 +1,6 @@
-DROP TABLE timezones;
-
 CREATE TABLE timezones (
-	userID varchar(10),
-	offset int
+	UserID varchar(10),
+	defaultzone varchar(10)
 );
 
+INSERT INTO timezones VALUES ('User', 'EST');
