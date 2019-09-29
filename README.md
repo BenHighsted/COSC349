@@ -9,3 +9,5 @@ Once the build has finished, navigate to localhost:8080 to access the converter.
 
 If you wish to build older versions of the code, you will need to delete the .vagrant folder included
 with the older versions.
+
+Assignment Part 2 can be found here: https://github.com/matthewneil/cosc349assignment2
